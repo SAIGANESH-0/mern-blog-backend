@@ -15,7 +15,11 @@ const salt = bcrypt.genSaltSync(10);
 const secret = process.env.SECRET || "saiganesh";
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://master--inspiring-lamington-7bc141.netlify.app',
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
