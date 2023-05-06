@@ -17,7 +17,8 @@ const port = process.env.PORT || 3001;
 
 app.use(cors({
     origin: 'https://master--inspiring-lamington-7bc141.netlify.app',
-    credentials: true
+    credentials: true,
+  optionsSuccessStatus: 200
 }));
 
 app.use(express.json());
