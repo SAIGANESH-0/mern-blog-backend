@@ -17,15 +17,8 @@ const port = process.env.PORT || 3001;
 
 app.use(cors({
     origin: 'https://master--inspiring-lamington-7bc141.netlify.app',
-    credentials: true,
-  optionsSuccessStatus: 200
+    credentials: true
 }));
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://master--inspiring-lamington-7bc141.netlify.app");
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
 
 
 app.use(express.json());
@@ -101,6 +94,14 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
     res.json(postDoc);
   });
 });
+
+app.use('/post', cors({
+  origin: 'https://master--inspiring-lamington-7bc141.netlify.app',
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
+
+app.options('/post', cors());
 
 app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
   let newPath = null;
