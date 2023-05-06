@@ -21,6 +21,13 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://master--inspiring-lamington-7bc141.netlify.app");
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+
+
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
